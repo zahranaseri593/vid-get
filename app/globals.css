@@ -3,25 +3,27 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  /* dark mode variables */
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    /* dark mode variables */
   }
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  /* body styles, apply and stuff */
+}
+
+.custom-btn {
+  @apply px-4 py-2 rounded-lg text-sm uppercase
+}
+
+.navbar{
+  @apply max-w-[80rem] mx-auto text-neutral-50 flex flex-row justify-between items-center px-12 py-6
+}
+
+.navbar__logo{
+  @apply text-teal-400 text-2xl tracking-wider uppercase
 }
