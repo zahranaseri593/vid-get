@@ -8,14 +8,14 @@ const Navbar = () => {
     const [collapse, setCollapse] = useState(false)
 
   return (
-    <header className='w-full bg-neutral-900'>
+    <header className=''>
         <nav className='navbar relative'>
-            <p className='navbar__logo lg:mr-14'>Vid.Get</p>
+            <p className='navbar__logo md:mr-14'>Vid.Get</p>
             {/* navbar collapse */}
             <div className={`${collapse? 'hidden': 'flex'} navbar__collapse`}>
                 <SearchBox />
                 <NavLinks />
-                <div className='flex gap-3 lg:flex-row'>
+                <div className='flex gap-3 md:flex-row'>
                     <CustomButton
                         title="Log in"
                         containerStyles=""
@@ -28,7 +28,7 @@ const Navbar = () => {
             </div>
 
             {/* menu icon */}
-            <Bars3Icon className='h-10 cursor-pointer lg:hidden' onClick={()=> setCollapse(prev => !prev)} />
+            <Bars3Icon className='h-10 cursor-pointer md:hidden' onClick={()=> setCollapse(prev => !prev)} />
         </nav>
     </header>
   )

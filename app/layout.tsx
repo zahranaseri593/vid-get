@@ -1,4 +1,4 @@
-import { Navbar } from '@/components'
+import { Footer, Navbar } from '@/components'
 import './globals.css'
 import type { Metadata } from 'next'
 import { Share_Tech } from 'next/font/google'
@@ -24,6 +24,7 @@ export default function RootLayout({
       <body  className={roboto.className}>
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   )
