@@ -24,6 +24,10 @@ body {
   @apply max-w-[80rem] mx-auto text-neutral-50 flex flex-row justify-between items-center px-12 py-6
 }
 
+.navbar__collapse{
+  @apply flex-col border-t-2 border-t-neutral-600 lg:border-none h-fit w-full items-center gap-10 lg:gap-0 lg:h-fit bg-neutral-900 absolute top-full right-0 p-6 text-center lg:p-0 lg:flex-row lg:bg-transparent lg:relative lg:justify-between lg:items-center lg:w-full
+}
+
 .navbar__logo{
   @apply text-teal-400 text-2xl tracking-wider uppercase
 }
