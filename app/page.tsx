@@ -69,7 +69,7 @@ const videoData = {
 }
 
 
-const dataArray = [1,2,3,4,5,6]
+const dataArray = [1,2,3,4,5,6,7,8,9,1]
 
 export default function Home() {
   return (
@@ -77,20 +77,20 @@ export default function Home() {
     <div className="w-full">
 
       {/* grid */}
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 row-span-6 gap-4">
         <div className='row-span-1'>
-          <h1 className='uppercase text-6xl font-bold tracking-tighter mb-10'> biggest bank of copyright free videos</h1>
+          <h1 className='uppercase text-2xl md:text-4xl lg:text-6xl font-bold tracking-tighter mb-10'> biggest bank of copyright free videos</h1>
           <p className='text-xl'>find videos you like, get them with just a click and use them !</p>
         </div>
         <VideoCard
           video={videoData}
-          containerStyle="col-span-2 row-span-4"
+          containerStyle="lg:col-span-2 xl:col-span-3 md:col-span-1 row-span-2"
         />
       
         {dataArray.map((item) => (
           <VideoCard
             video={videoData}
-            containerStyle="row-span-4"
+            containerStyle="row-span-3"
             key={videoData.id}
         />
         ))}
