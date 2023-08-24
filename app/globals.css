@@ -31,3 +31,7 @@ body {
 .navbar__logo{
   @apply text-teal-400 text-2xl tracking-wider uppercase
 }
+
+.bg-css {
+  @apply bg-cover bg-no-repeat bg-center
+}
