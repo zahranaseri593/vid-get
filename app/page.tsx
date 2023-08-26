@@ -2,36 +2,34 @@
 
 import { VideoCard } from '@/components'
 import { VideoProps } from '@/types'
+import { fetchVideos } from '@/utils'
 import { useEffect, useState } from 'react'  
+import {RotatingLines} from 'react-loader-spinner'
 
 export default function Home() {
 
   const [loading, setLoading] = useState(false)
-  const [videos, setVideos] = useState< object | VideoProps>({})
-
-  const fetchVideos = async () => {
-    try {
-      setLoading(true)
-      const response = await fetch('https://api.pexels.com/videos/popular',{
-         method: "GET",
-         headers: {
-           "Authorization": "bFzTf9c6Eg2xn8DpkwlWwWTwgh1KxPqEKVESvzZXLIWFx1BNZBUvg1Yh"
-         },})
-         const data = await response.json()
-         setVideos(data)
-    } catch (error) {
-      console.log(error)
-    }finally{
-      setLoading(false)
-    }
-  };
+  const [videos, setVideos] = useState< any | VideoProps>({})
 
   useEffect(() => {
-    fetchVideos();
+    setLoading(true)
+    
+    fetchVideos('popular')
+    .then((response) => setVideos(response)).then(()=> setLoading(false))
+    .catch((error)=> console.log(error))
   }, []);
 
 
-  if(loading) return <p>Loading...</p>
+  if(loading) return (
+    <div className="flex justify-center">
+    <RotatingLines
+      strokeColor="#2dd4bf"
+      strokeWidth="3"
+      width="50"
+      visible={true}
+    />
+    </div>
+  )
 
   if(videos.videos) return (
     <>
@@ -60,4 +58,5 @@ export default function Home() {
     </div>
     </>
   )
+
 }

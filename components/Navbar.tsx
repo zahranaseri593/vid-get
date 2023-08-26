@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { CustomButton, NavLinks, SearchBox } from '.'
 import { Bars3Icon } from '@heroicons/react/24/solid'
+import Link from 'next/link'
 
 const Navbar = () => {
     const [collapse, setCollapse] = useState(false)
@@ -10,7 +11,9 @@ const Navbar = () => {
   return (
     <header className=''>
         <nav className='navbar relative'>
-            <p className='navbar__logo md:mr-14'>Vid.Get</p>
+            <Link href='/'>
+                <p className='navbar__logo md:mr-14'>Vid.Get</p>
+            </Link>
             {/* navbar collapse */}
             <div className={`${collapse? 'hidden': 'flex'} navbar__collapse`}>
                 <SearchBox />
