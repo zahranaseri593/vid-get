@@ -1,13 +1,14 @@
-export async function fetchVideos(filters: string) {
+export async function fetchVideos(req: string) {
     
     // Set the required headers for the API request
     const headers: HeadersInit = {
         "Authorization": "bFzTf9c6Eg2xn8DpkwlWwWTwgh1KxPqEKVESvzZXLIWFx1BNZBUvg1Yh"
     }
 
+
     // Set the required headers for the API request
     const response = await fetch(
-      `https://api.pexels.com/videos/${filters}`,
+      `${req}`,
       {
         headers: headers,
       }
@@ -18,3 +19,5 @@ export async function fetchVideos(filters: string) {
   
     return result;
   }
+
+  export const url = 'https://api.pexels.com/'

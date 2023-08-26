@@ -2,7 +2,9 @@
 
 import { VideoCard } from '@/components'
 import { VideoProps } from '@/types'
-import { fetchVideos } from '@/utils'
+import { fetchVideos, url } from '@/utils'
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/solid'
+import Link from 'next/link'
 import { useEffect, useState } from 'react'  
 import {RotatingLines} from 'react-loader-spinner'
 
@@ -14,10 +16,20 @@ export default function Home() {
   useEffect(() => {
     setLoading(true)
     
-    fetchVideos('popular')
+    fetchVideos(`${url}/videos/popular`)
     .then((response) => setVideos(response)).then(()=> setLoading(false))
     .catch((error)=> console.log(error))
   }, []);
+
+
+  const handlePage = (e: any, page :string) => {
+    e.preventDefault()
+    setLoading(true)
+    
+    fetchVideos(`${page}`)
+    .then((response) => setVideos(response)).then(()=> setLoading(false))
+    .catch((error)=> console.log(error))
+  }
 
 
   if(loading) return (
@@ -34,7 +46,6 @@ export default function Home() {
   if(videos.videos) return (
     <>
     <div className="w-full">
-
       {/* grid */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 row-span-6 gap-4">
         <div className='row-span-1'>
@@ -54,8 +65,27 @@ export default function Home() {
          />
         ))}
       </div>
-        
     </div>
+
+    {/* pagination */}
+    <div className='w-fit mx-auto flex gap-2 mt-5'>
+      
+      {videos.prev_page && 
+      <div className="bg-teal-700 p-2 rounded-full cursor-pointer">
+      <ChevronLeftIcon className='text-white h-6' onClick={(e)=>{handlePage(e,videos.prev_page)}}/>
+      </div>
+      }
+
+      {videos.next_page && 
+      <>
+      <div className="bg-teal-800 p-2 rounded-lg cursor-pointer">
+      page: {videos.page}
+      </div>
+      <div className="bg-teal-700 p-2 rounded-full cursor-pointer">
+      <ChevronRightIcon className='text-white h-6' onClick={(e)=>{handlePage(e,videos.next_page)}}/>
+      </div></>}
+
+      </div>
     </>
   )
 
