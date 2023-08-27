@@ -2,6 +2,7 @@ import { Footer, Navbar } from '@/components'
 import './globals.css'
 import type { Metadata } from 'next'
 import { Share_Tech } from 'next/font/google'
+import { useState, createContext } from 'react'
  
 const roboto = Share_Tech({
   weight: '400',
