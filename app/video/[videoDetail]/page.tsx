@@ -2,13 +2,15 @@
 
 import { VideoProps } from '@/types'
 import { fetchVideos, url } from '@/utils'
-import { usePathname } from 'next/navigation'
+import { usePathname, useSearchParams } from 'next/navigation'
 import {useState,useEffect} from 'react'
 import { RotatingLines } from 'react-loader-spinner'
 import ReactPlayer from 'react-player'
 
 const page = () => {
-    const router = usePathname()
+    const videoParams = useSearchParams()
+    const VideoId = videoParams.get('vid')
+    console.log(VideoId)
     //how to write it better and cleaner?
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
@@ -17,7 +19,7 @@ const page = () => {
   useEffect(() => {
     setLoading(true)
     
-    fetchVideos(`${url}videos/videos/${router}`)
+    fetchVideos(`${url}videos/videos/${VideoId}`)
     .then((response) => setVideoDetail(response)).then(()=> setLoading(false))
     .catch((error)=> setError(error))
   },[])
