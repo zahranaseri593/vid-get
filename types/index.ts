@@ -4,6 +4,16 @@ export interface CustomButtonProps {
     btnType?: "button" | "submit";
 }
 
+export interface VideoFilesProps {
+    'id': number;
+    'quality': 'hd' | 'sd';
+    'file_type': string;
+    'width': number;
+    'height': number;
+    'fps': number;
+    'link': string;
+}
+
 export interface VideoProps {
     'id': number;
     'width': number;
@@ -18,15 +28,7 @@ export interface VideoProps {
         'name': string;
         'url': string;
     };
-    'video_files': {
-        'id': number;
-        'quality': 'hd' | 'sd';
-        'file_type': string;
-        'width': number;
-        'height': number;
-        'fps': number;
-        'link': string;
-    }[];
+    'video_files': VideoFilesProps[];
     'video_pictures': {
         'id': number;
         'picture': string;

@@ -51,3 +51,7 @@ body {
 .collection{
   @apply flex items-center gap-2 max-w-full overflow-x-auto py-4
 }
+
+.select-css{
+  @apply block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500
+}
