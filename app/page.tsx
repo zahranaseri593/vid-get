@@ -1,13 +1,12 @@
 'use client'
 
-import { VideoCard } from '@/components'
+import { Loading, VideoCard } from '@/components'
 import { CategoryProps, CollectionProps, VideoProps } from '@/types'
 import { fetchVideos, url } from '@/utils'
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/solid'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
-import { useEffect, useState, useContext } from 'react'
-import {RotatingLines} from 'react-loader-spinner'
+import { useEffect, useState } from 'react'
 
 export default function Home() {
   const searchParams = useSearchParams()
@@ -30,8 +29,6 @@ export default function Home() {
     fetchVideos(`${url}/v1/collections/featured`)
     .then((response) => setCategories(response))
     .catch((error)=> console.log(error))
-    
-    console.log(categories)
   }, [searchTerm])
 
 
@@ -45,16 +42,7 @@ export default function Home() {
   }
 
 
-  if(loading) return (
-    <div className="flex justify-center">
-    <RotatingLines
-      strokeColor="#2dd4bf"
-      strokeWidth="3"
-      width="50"
-      visible={true}
-    />
-    </div>
-  )
+  if(loading) return <Loading />
 
   if(videos.videos) return (
     <>

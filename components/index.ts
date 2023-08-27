@@ -4,6 +4,7 @@ import NavLinks from "./NavLinks";
 import CustomButton from "./CustomButton";
 import Footer from "./Footer";
 import VideoCard from "./VideoCard";
+import Loading from "./Loading";
 
 export {
     Navbar,
@@ -11,5 +12,6 @@ export {
     NavLinks,
     CustomButton,
     Footer,
-    VideoCard
+    VideoCard,
+    Loading
 }

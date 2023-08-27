@@ -1,26 +1,26 @@
 'use client'
 
+import { Loading } from '@/components'
 import { VideoFilesProps, VideoProps } from '@/types'
 import { fetchVideos, url } from '@/utils'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 import {useState,useEffect, ChangeEventHandler} from 'react'
-import { RotatingLines } from 'react-loader-spinner'
 import ReactPlayer from 'react-player'
 
 const page = () => {
-    const videoParams = useSearchParams()
-    const VideoId = videoParams.get('vid')
-    //how to write it better and cleaner?
-    const [error, setError] = useState('')
-    const [loading, setLoading] = useState(false)
-    const [videoDetail, setVideoDetail] = useState< any | VideoProps>({})
+  const videoParams = useSearchParams()
+  const VideoId = videoParams.get('vid')
 
-    const [selected , setSelected] = useState<string>('')
+  const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [videoDetail, setVideoDetail] = useState< any | VideoProps>({})
 
-    const setUrl = (e: any ) =>{
-      setSelected(e.target.value) 
-    }
+  const [selected , setSelected] = useState<string>('')
+  const setUrl = (e: any ) =>{
+    setSelected(e.target.value) 
+  }
+
   useEffect(() => {
     setLoading(true)
     
@@ -29,16 +29,8 @@ const page = () => {
     .catch((error)=> setError(error))
   },[])
 
-  if(loading || !videoDetail.video_files) return (
-    <div className="flex justify-center">
-    <RotatingLines
-      strokeColor="#2dd4bf"
-      strokeWidth="3"
-      width="50"
-      visible={true}
-    />
-    </div>
-  )
+  if(loading || !videoDetail.video_files) return <Loading />
+  
 
   if(videoDetail.video_files) return (
     <div className='flex flex-col gap-8 max-w-5xl mx-auto'>
