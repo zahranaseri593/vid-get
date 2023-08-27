@@ -50,7 +50,7 @@ const page = () => {
             <select id="underline_select"  className="select-css" onChange={(e)=>{setUrl(e)}}>
                 <option selected disabled>choose a resolution</option>
                 {videoDetail.video_files.map((v :VideoFilesProps)=>(
-                  <option value={v.link}>quality {v.quality}</option>
+                  <option value={v.link}>quality {v.quality} - {v.width} * {v.height}</option>
                 ))}
             </select>
             <Link href={`${selected}`} target='_blank' className='bg-teal-700 text-white px-5 py-2 rounded-lg'>Download</Link>

@@ -12,7 +12,7 @@ const Navbar = () => {
     <header className=''>
         <nav className='navbar relative'>
             <Link href='/'>
-                <p className='navbar__logo md:mr-14'>Vid.Get</p>
+                <p className='navbar__logo md:mr-14 lg:mr-40'>Vid.Get</p>
             </Link>
             {/* navbar collapse */}
             <div className={`${collapse? 'hidden': 'flex'} navbar__collapse`}>

@@ -17,11 +17,11 @@ body {
 }
 
 .custom-btn {
-  @apply px-4 py-2 rounded-md text-sm uppercase
+  @apply px-4 py-2 rounded-md text-sm lg:text-lg uppercase
 }
 
 .navbar{
-  @apply max-w-[80rem] mx-auto text-neutral-50 flex flex-row justify-between items-center px-12 py-6
+  @apply max-w-[100rem] mx-auto text-neutral-50 flex flex-row justify-between items-center px-5 py-6
 }
 
 .navbar__collapse{
@@ -29,7 +29,7 @@ body {
 }
 
 .navbar__logo{
-  @apply text-teal-400 text-2xl tracking-wider uppercase
+  @apply text-teal-400 text-2xl lg:text-3xl tracking-wider uppercase
 }
 
 .bg-css {
