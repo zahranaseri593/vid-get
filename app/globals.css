@@ -43,3 +43,11 @@ body {
 .homeTitle{
   @apply text-2xl md:text-4xl lg:text-6xl font-bold tracking-tighter mb-10
 }
+
+.category{
+  @apply text-teal-700 border border-teal-700 px-3 rounded-full whitespace-nowrap
+}
+
+.collection{
+  @apply flex items-center gap-2 max-w-full overflow-x-auto py-4
+}

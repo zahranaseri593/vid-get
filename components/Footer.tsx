@@ -5,7 +5,7 @@ const Footer = () => {
     <footer>
         <p className="text-base text-neutral-700 text-center">
             Vid.Get 2023 <br />
-            All rights reserved &copy;
+            All rights reserved Zahra Naseri &copy;
         </p>
     </footer>
   )

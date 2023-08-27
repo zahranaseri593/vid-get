@@ -1,7 +1,7 @@
 'use client'
 
 import { VideoCard } from '@/components'
-import { VideoProps } from '@/types'
+import { CategoryProps, CollectionProps, VideoProps } from '@/types'
 import { fetchVideos, url } from '@/utils'
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/solid'
 import Link from 'next/link'
@@ -15,6 +15,7 @@ export default function Home() {
 
   const [loading, setLoading] = useState(false)
   const [videos, setVideos] = useState< any | VideoProps>({})
+  const [categories, setCategories] = useState<any| CategoryProps>({})
 
   useEffect(() => {
     setLoading(true)
@@ -24,6 +25,13 @@ export default function Home() {
     fetchVideos(`${url}/videos/${searchTerm? searchQuery :'popular'}`)
     .then((response) => setVideos(response)).then(()=> setLoading(false))
     .catch((error)=> console.log(error))
+
+    // get collections
+    fetchVideos(`${url}/v1/collections/featured`)
+    .then((response) => setCategories(response))
+    .catch((error)=> console.log(error))
+    
+    console.log(categories)
   }, [searchTerm])
 
 
@@ -58,6 +66,14 @@ export default function Home() {
         <div className={`row-span-1 ${searchTerm? 'col-span-2 md:col-span-3 lg:col-span-3 xl:col-span-4': ''}`}>
           <h1 className={`uppercase ${searchTerm? 'searchTitle':'homeTitle'}`}>{searchTerm? `searching for : ${searchTerm}` : 'biggest bank of copyright free videos'}</h1>
           <p className='text-xl'>{searchTerm? `${videos.total_results} results found for ${searchTerm} !`:'find videos you like, get them with just a click and use them !'}</p>
+
+          {categories.collections && 
+            <div className='collection'>
+              {categories.collections.map((c : CollectionProps)=>(
+                <Link href={`?searchTerm=${c.title}`} key={c.id} className='category'>{c.title}</Link>
+              ))}
+            </div>
+          }
         </div>
         {!searchTerm && <VideoCard
           video={videos.videos[0]}
