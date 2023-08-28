@@ -4,6 +4,8 @@ import { VideoProps } from '@/types'
 import { ClockIcon, HeartIcon, PlusIcon } from '@heroicons/react/24/solid';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Loading } from '.';
+import { RotatingLines } from 'react-loader-spinner';
 
 interface VideoCardProps {
     video: VideoProps;
@@ -26,7 +28,17 @@ const VideoCard = ({video,containerStyle}: VideoCardProps) => {
   return (
     <div className={`${containerStyle} min-h-[20rem] md:min-h-[30rem] `}>
        <Link href={`/video/id?vid=${video.id}`} >
-        <div className='bg-css bg-teal-700 w-full h-full rounded-2xl relative'>
+        <div className='bg-css bg-teal-900 w-full h-full rounded-2xl relative'>
+            <div className='w-full h-full absolute flex items-center justify-center' style={{top:0, left: 0}}>
+            <RotatingLines
+              strokeColor="#2dd4bf"
+              strokeWidth="3"
+              width="50"
+              visible={true}
+            />
+            </div>
+            
+            
             <video src={`${video.video_files[0].link}`}
               type={`${video.video_files[0].file_type}`} muted onMouseEnter={(e)=>{handleHover(e)}} onMouseLeave={(e)=>{handleLeave(e)}} className="absolute w-full h-full object-cover rounded-2xl z-0" loop style={{top: 0 , left: 0}}>
             </video>
@@ -39,7 +51,7 @@ const VideoCard = ({video,containerStyle}: VideoCardProps) => {
               className='object-cover w-full h-full absolute rounded-2xl z-10'
               style={{top:0, left: 0}}
               onMouseOver={(e:any)=>{e.target.hidden = true}}
-              onMouseLeave={(e:any)=>{e.target.hidden = true}}
+              onMouseLeave={(e:any)=>{e.target.hidden = false}}
             />
 
               <div className='h-full flex flex-col justify-between p-2 z-10'>
