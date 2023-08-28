@@ -36,10 +36,10 @@ const page = () => {
     <div className='flex flex-col gap-8 max-w-5xl mx-auto'>
         <div className=''>
            <ReactPlayer 
-          url={`${videoDetail.video_files[0].link}`}
-          width='100%' 
-          height='100%' 
-          controls={true} 
+            url={`${videoDetail.video_files[0].link}`}
+            width='100%' 
+            height='100%' 
+            controls={true} 
           /> 
 
         </div>

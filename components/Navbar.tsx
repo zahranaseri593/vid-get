@@ -9,8 +9,8 @@ const Navbar = () => {
     const [collapse, setCollapse] = useState(false)
 
   return (
-    <header className=''>
-        <nav className='navbar relative'>
+    <header className='z-30'>
+        <nav className='navbar z-30 relative'>
             <Link href='/'>
                 <p className='navbar__logo md:mr-14 lg:mr-40'>Vid.Get</p>
             </Link>

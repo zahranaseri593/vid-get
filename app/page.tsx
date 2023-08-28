@@ -13,6 +13,7 @@ export default function Home() {
   const searchTerm = searchParams.get('searchTerm')
 
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
   const [videos, setVideos] = useState< any | VideoProps>({})
   const [categories, setCategories] = useState<any| CategoryProps>({})
 
@@ -38,11 +39,13 @@ export default function Home() {
     
     fetchVideos(`${page}`)
     .then((response) => setVideos(response)).then(()=> setLoading(false))
-    .catch((error)=> console.log(error))
+    .catch((error)=> setError(error))
   }
 
 
   if(loading) return <Loading />
+
+  if(error) return <p>internal server error. try again</p>
 
   if(videos.videos) return (
     <>
