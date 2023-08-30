@@ -14,10 +14,10 @@ const page = () => {
 
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
-  const [videoDetail, setVideoDetail] = useState< any | VideoProps>({})
+  const [videoDetail, setVideoDetail] = useState< {} | VideoProps>({})
 
   const [selected , setSelected] = useState<string>('')
-  const setUrl = (e: any ) =>{
+  const setUrl = (e: React.ChangeEvent<HTMLSelectElement> ) =>{
     setSelected(e.target.value) 
   }
 
@@ -29,14 +29,14 @@ const page = () => {
     .catch((error)=> setError(error))
   },[])
 
-  if(loading || !videoDetail.video_files) return <Loading />
+  if(loading || !(videoDetail as VideoProps).video_files) return <Loading />
   
 
-  if(videoDetail.video_files) return (
+  if((videoDetail as VideoProps).video_files) return (
     <div className='flex flex-col gap-8 max-w-5xl mx-auto'>
         <div className=''>
            <ReactPlayer 
-            url={`${videoDetail.video_files[0].link}`}
+            url={`${(videoDetail as VideoProps).video_files[0].link}`}
             width='100%' 
             height='100%' 
             controls={true} 
@@ -45,12 +45,12 @@ const page = () => {
         </div>
 
         <div className="max-w-md flex flex-col gap-3 text-center mx-auto">
-            <Link href={videoDetail.user.url} className="text-3xl text-white">Artist : {videoDetail.user.name}</Link>
-            <p>video duration: {videoDetail.duration} sec</p>
+            <Link href={(videoDetail as VideoProps).user.url} className="text-3xl text-white">Artist : {(videoDetail as VideoProps).user.name } </Link>
+            <p>video duration: {(videoDetail as VideoProps).duration} sec</p>
             <select id="underline_select"  className="select-css" onChange={(e)=>{setUrl(e)}}>
                 <option selected disabled>choose a resolution</option>
-                {videoDetail.video_files.map((v :VideoFilesProps)=>(
-                  <option value={v.link}>quality {v.quality} - {v.width} * {v.height}</option>
+                {(videoDetail as VideoProps).video_files.map((v :VideoFilesProps)=>(
+                  <option key={v.id} value={v.link}>quality {v.quality} - {v.width} * {v.height}</option>
                 ))}
             </select>
             <Link href={`${selected}`} target='_blank' className='bg-teal-700 text-white px-5 py-2 rounded-lg'>Download</Link>
