@@ -40,8 +40,8 @@ const VideoCard = ({video,containerStyle}: VideoCardProps) => {
                 </div>
 
 
-              <div className='flex justify-between '>
-                <Link href={video.user.url} className='flex '>
+              <div className='flex justify-between items-center'>
+                <Link href={video.user.url} className='flex items-center'>
                   <div 
                   className='bg-css p-6 rounded-full mr-2' 
                   style={{backgroundImage: `url(https://media.istockphoto.com/id/1337144146/vector/default-avatar-profile-icon-vector.jpg?s=612x612&w=0&k=20&c=BIbFwuv7FxTWvh5S3vB6bkT0Qv8Vn8N5Ffseq84ClGI=)`,backgroundSize: '150%'}}/>
