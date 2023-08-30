@@ -55,3 +55,12 @@ export interface CategoryProps{
     "prev_page": string ;
 
 }
+
+export interface VideoResult {
+    "page": number;
+    "per_page": number;
+    "total_results": number;
+    "next_page"?: string;
+    "prev_page"?: string;
+    "videos" : VideoProps[];
+}

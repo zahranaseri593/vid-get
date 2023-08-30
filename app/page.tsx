@@ -1,7 +1,7 @@
 'use client'
 
 import { Loading, VideoCard } from '@/components'
-import { CategoryProps, CollectionProps, VideoProps } from '@/types'
+import { CategoryProps, CollectionProps, VideoProps, VideoResult } from '@/types'
 import { fetchVideos, url } from '@/utils'
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/solid'
 import Link from 'next/link'
@@ -14,8 +14,8 @@ export default function Home() {
 
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
-  const [videos, setVideos] = useState< any | VideoProps>({})
-  const [categories, setCategories] = useState<any| CategoryProps>({})
+  const [videos, setVideos] = useState< {} | VideoResult>({})
+  const [categories, setCategories] = useState<{}| CategoryProps>({})
 
   useEffect(() => {
     setLoading(true)
@@ -33,7 +33,7 @@ export default function Home() {
   }, [searchTerm])
 
 
-  const handlePage = (e: any, page :string) => {
+  const handlePage = (e: React.MouseEvent<SVGSVGElement>, page :string) => {
     e.preventDefault()
     setLoading(true)
     
@@ -47,7 +47,7 @@ export default function Home() {
 
   if(error) return <p>internal server error. try again</p>
 
-  if(videos.videos) return (
+  if('videos' in videos) return (
     <>
     <div className="w-full">
       {/* grid */}
@@ -58,9 +58,9 @@ export default function Home() {
           <h1 className={`uppercase ${searchTerm? 'searchTitle':'homeTitle'}`}>{searchTerm? `searching for : ${searchTerm}` : 'biggest bank of copyright free videos'}</h1>
           <p className='text-xl'>{searchTerm? `${videos.total_results} results found for ${searchTerm} !`:'find videos you like, get them with just a click and use them !'}</p>
 
-          {categories.collections && 
+          {(categories as CategoryProps).collections && 
             <div className='collection'>
-              {categories.collections.map((c : CollectionProps)=>(
+              {(categories as CategoryProps).collections.map((c : CollectionProps)=>(
                 <Link href={`?searchTerm=${c.title}`} key={c.id} className='category'>{c.title}</Link>
               ))}
             </div>
@@ -76,7 +76,7 @@ export default function Home() {
            <VideoCard
              video={item}
              containerStyle="row-span-3"
-             key={videos.id}
+             key={item.id}
          />
         ))}
       </div>
@@ -87,7 +87,7 @@ export default function Home() {
       
       {videos.prev_page && 
       <div className="bg-teal-700 p-2 rounded-full cursor-pointer">
-      <ChevronLeftIcon className='text-white h-6' onClick={(e)=>{handlePage(e,videos.prev_page)}}/>
+      <ChevronLeftIcon className='text-white h-6' onClick={(e)=>{handlePage(e,videos.prev_page!)}}/>
       </div>
       }
 
@@ -97,7 +97,7 @@ export default function Home() {
       page: {videos.page}
       </div>
       <div className="bg-teal-700 p-2 rounded-full cursor-pointer">
-      <ChevronRightIcon className='text-white h-6' onClick={(e)=>{handlePage(e,videos.next_page)}}/>
+      <ChevronRightIcon className='text-white h-6' onClick={(e)=>{handlePage(e,videos.next_page!)}}/>
       </div></>}
 
       </div>
