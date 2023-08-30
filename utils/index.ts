@@ -1,10 +1,8 @@
-import { env } from "process";
-
 export async function fetchVideos(req: string) {
     
     // Set the required headers for the API request
     const headers: HeadersInit = {
-        "Authorization": env.pexelsApi
+        "Authorization": process.env.pexelsApi
     }
 
 

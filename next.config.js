@@ -24,7 +24,7 @@ const nextConfig = {
         ]
     },
     env: {
-        pexelsApi: 'bFzTf9c6Eg2xn8DpkwlWwWTwgh1KxPqEKVESvzZXLIWFx1BNZBUvg1Yh',
+        pexelsApi: 'dlnolBp0Ovh27cH0D6LGsRqSas7GhHYF9s1I1rRginega73L0ppndbbY',
     }
 }
 
