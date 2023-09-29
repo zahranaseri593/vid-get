@@ -22,9 +22,6 @@ const nextConfig = {
                 ]
             }
         ]
-    },
-    env: {
-        pexelsApi: 'dlnolBp0Ovh27cH0D6LGsRqSas7GhHYF9s1I1rRginega73L0ppndbbY',
     }
 }
 

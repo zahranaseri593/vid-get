@@ -1,8 +1,10 @@
 export async function fetchVideos(req: string) {
+
+    const apiKey = 'bFzTf9c6Eg2xn8DpkwlWwWTwgh1KxPqEKVESvzZXLIWFx1BNZBUvg1Yh';
     
     // Set the required headers for the API request
     const headers: HeadersInit = {
-        "Authorization": process.env.pexelsApi
+        "Authorization": apiKey
     }
 
 
