@@ -40,7 +40,7 @@ const VideoCard = ({video,containerStyle}: VideoCardProps) => {
             
             
             <video src={`${video.video_files[0].link}`}
-              type={`${video.video_files[0].file_type}`} muted onMouseEnter={(e)=>{handleHover(e)}} onMouseLeave={(e)=>{handleLeave(e)}} className="absolute w-full h-full object-cover rounded-2xl z-0" loop style={{top: 0 , left: 0}}>
+            muted onMouseEnter={(e)=>{handleHover(e)}} onMouseLeave={(e)=>{handleLeave(e)}} className="absolute w-full h-full object-cover rounded-2xl z-0" loop style={{top: 0 , left: 0}}>
             </video>
 
             <Image 
