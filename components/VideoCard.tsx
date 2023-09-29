@@ -28,33 +28,9 @@ const VideoCard = ({video,containerStyle}: VideoCardProps) => {
   return (
     <div className={`${containerStyle} min-h-[20rem] md:min-h-[30rem] `}>
        <Link href={`/video/id?vid=${video.id}`} >
-        <div className='bg-css bg-teal-900 w-full h-full rounded-2xl relative'>
-            <div className='w-full h-full absolute flex items-center justify-center' style={{top:0, left: 0}}>
-            <RotatingLines
-              strokeColor="#2dd4bf"
-              strokeWidth="3"
-              width="50"
-              visible={true}
-            />
-            </div>
-            
-            
-            <video src={`${video.video_files[0].link}`}
-            muted onMouseEnter={(e)=>{handleHover(e)}} onMouseLeave={(e)=>{handleLeave(e)}} className="absolute w-full h-full object-cover rounded-2xl z-0" loop style={{top: 0 , left: 0}}>
-            </video>
 
-            <Image 
-              src={`${video.image}`}
-              width={video.width}
-              height={video.height}
-              alt='thumbnail'
-              className='object-cover w-full h-full absolute rounded-2xl z-10'
-              style={{top:0, left: 0}}
-              onMouseOver={(e:any)=>{e.target.hidden = true}}
-              onMouseLeave={(e:any)=>{e.target.hidden = false}}
-            />
-
-              <div className='h-full flex flex-col justify-between p-2 z-10'>
+        <div className='bg-css bg-teal-900 w-full h-full rounded-2xl' style={{backgroundImage: `url(${video.image})`}}>
+              <div className='h-full flex flex-col justify-between p-2 '>
                 <div className='w-full flex justify-end gap-2 z-20'>
                   <span className="bg-neutral-50 p-2 rounded-full bg-opacity-75"><HeartIcon 
                     className={`h-3 text-neutral-900`}
@@ -65,8 +41,8 @@ const VideoCard = ({video,containerStyle}: VideoCardProps) => {
                 </div>
 
 
-              <div className='flex justify-between z-10'>
-                <Link href={video.user.url} className='flex '>
+              <div className='flex justify-between items-center'>
+                <Link href={video.user.url} className='flex items-center'>
                   <div 
                   className='bg-css p-6 rounded-full mr-2' 
                   style={{backgroundImage: `url(https://media.istockphoto.com/id/1337144146/vector/default-avatar-profile-icon-vector.jpg?s=612x612&w=0&k=20&c=BIbFwuv7FxTWvh5S3vB6bkT0Qv8Vn8N5Ffseq84ClGI=)`,backgroundSize: '150%'}}/>

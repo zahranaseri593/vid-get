@@ -45,12 +45,16 @@ const page = () => {
         </div>
 
         <div className="max-w-md flex flex-col gap-3 text-center mx-auto">
-            <Link href={(videoDetail as VideoProps).user.url} className="text-3xl text-white">Artist : {(videoDetail as VideoProps).user.name } </Link>
+
+            <Link href={(videoDetail as VideoProps).user.url} className="text-3xl text-white">Artist : {(videoDetail as VideoProps).user.name}</Link>
+
             <p>video duration: {(videoDetail as VideoProps).duration} sec</p>
             <select id="underline_select"  className="select-css" onChange={(e)=>{setUrl(e)}}>
                 <option selected disabled>choose a resolution</option>
                 {(videoDetail as VideoProps).video_files.map((v :VideoFilesProps)=>(
-                  <option key={v.id} value={v.link}>quality {v.quality} - {v.width} * {v.height}</option>
+
+                  <option value={v.link}>quality {v.quality} - {v.width} * {v.height}</option>
+
                 ))}
             </select>
             <Link href={`${selected}`} target='_blank' className='bg-teal-700 text-white px-5 py-2 rounded-lg'>Download</Link>
