@@ -28,6 +28,7 @@ const VideoCard = ({video,containerStyle}: VideoCardProps) => {
   return (
     <div className={`${containerStyle} min-h-[20rem] md:min-h-[30rem] `}>
        <Link href={`/video/id?vid=${video.id}`} >
+
         <div className='bg-css bg-teal-900 w-full h-full rounded-2xl' style={{backgroundImage: `url(${video.image})`}}>
               <div className='h-full flex flex-col justify-between p-2 '>
                 <div className='w-full flex justify-end gap-2 z-20'>

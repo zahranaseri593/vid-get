@@ -56,7 +56,7 @@ export default function Home() {
         
         <div className={`row-span-1 ${searchTerm? 'col-span-2 md:col-span-3 lg:col-span-3 xl:col-span-4': ''}`}>
           <h1 className={`uppercase ${searchTerm? 'searchTitle':'homeTitle'}`}>{searchTerm? `searching for : ${searchTerm}` : 'biggest bank of copyright free videos'}</h1>
-          <p className='text-xl'>{searchTerm? `${videos.total_results} results found for ${searchTerm} !`:'find videos you like, get them with just a click and use them !'}</p>
+          <p className='text-xl'>{searchTerm? `${(videos as VideoResult).total_results} results found for ${searchTerm} !`:'find videos you like, get them with just a click and use them !'}</p>
 
           {(categories as CategoryProps).collections && 
             <div className='collection'>
@@ -100,7 +100,9 @@ export default function Home() {
       <ChevronRightIcon className='text-white h-6' onClick={(e)=>{handlePage(e,videos.next_page!)}}/>
       </div></>}
 
-      </div>
+    </div>
+
+
     </>
   )
 

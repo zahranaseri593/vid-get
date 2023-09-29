@@ -53,7 +53,6 @@ export interface CategoryProps{
     "total_results": number;
     "next_page": string ;
     "prev_page": string ;
-
 }
 
 export interface VideoResult {
