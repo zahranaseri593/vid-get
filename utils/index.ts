@@ -8,7 +8,6 @@ export async function fetchVideos(req: string) {
         "Authorization": apiKey
       }
 
-
     // Set the required headers for the API request
     const response = await fetch(
       `${req}`,
